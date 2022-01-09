@@ -1,0 +1,15 @@
+-- After connection with poweruser, execute:
+
+-- Create Database and Schema
+CREATE DATABASE cc_mass_mailing;
+\c cc_mass_mailing;
+CREATE SCHEMA cc_mass_mailing;
+set schema 'cc_mass_mailing';
+DROP SCHEMA public;
+SET timezone = 'Europe/Bucharest';
+
+-- Create User with READ/INSERT permissions (will be used by the external portal app)
+CREATE USER cc_mass_mailing_user_be WITH ENCRYPTED PASSWORD 'cc_mass_mailing_user_be';
+GRANT CONNECT ON DATABASE cc_mass_mailing TO cc_mass_mailing_user_be;
+GRANT USAGE ON SCHEMA cc_mass_mailing TO cc_mass_mailing_user_be;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA cc_mass_mailing TO cc_mass_mailing_user_be;
