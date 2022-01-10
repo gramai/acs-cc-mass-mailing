@@ -32,3 +32,8 @@ end $$ language 'plpgsql';
 
 
 select insert_users(10000);
+
+
+GRANT CONNECT ON DATABASE cc_mass_mailing TO cc_mass_mailing_user_be;
+GRANT USAGE ON SCHEMA cc_mass_mailing TO cc_mass_mailing_user_be;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA cc_mass_mailing TO cc_mass_mailing_user_be;

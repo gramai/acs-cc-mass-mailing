@@ -54,7 +54,7 @@ public class MailSenderApi {
     public void sendMessage(SimpleMailMessage msg) {
         try {
             javaMailSender.send(msg);
-            log.debug("The email has been sent");
+            log.debug("The email has been sent to mailAddress: '{}'", msg.getTo()[0]);
         } catch (Exception exception) {
             log.debug("The email was not sent, reason:" + exception.getMessage());
             throw new RuntimeException("Unable to send email!");
